@@ -17,7 +17,7 @@
 
 ## 🍉安装
 
-转到 [Releases](https://github.com/miniyu157/KlxPiao.ColorTool/releases) 下载，或者使用下面的命令下载源代码并编译
+转到 [Releases](https://github.com/miniyu157/RankingScoreTool/releases) 下载，或者使用下面的命令下载源代码并编译
 ```bash
 git clone https://github.com/miniyu157/RankingScoreTool
 ```
