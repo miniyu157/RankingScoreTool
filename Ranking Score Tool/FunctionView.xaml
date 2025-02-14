@@ -1,0 +1,47 @@
+﻿<Window x:Class="Ranking_Score_Tool.FunctionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Ranking_Score_Tool"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ws="https://schemas.elecho.dev/wpfsuite"
+        Title="FunctionView"
+        Width="541"
+        Height="260"
+        ws:WindowOption.Backdrop="{StaticResource Backdrop}"
+        ws:WindowOption.BorderColor="Pink"
+        ws:WindowOption.Corner="{StaticResource Corner}"
+        ws:WindowOption.IsDarkMode="{StaticResource IsDark}"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
+
+    <Window.DataContext>
+        <local:FunctionViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ws:Image Grid.Row="0">
+            <ws:Image.Style>
+                <Style TargetType="ws:Image">
+                    <Setter Property="Source" Value="pack://application:,,,/Images/Function_Light.png" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=(ws:WindowOption.IsDarkMode)}" Value="False">
+                            <Setter Property="Source" Value="pack://application:,,,/Images/Function_Dark.png" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ws:Image.Style>
+        </ws:Image>
+
+        <ws:Button Grid.Row="1" Command="{Binding OpenLinkCommand}" Content="打开链接" Style="{StaticResource ReverseButton}" />
+    </Grid>
+</Window>

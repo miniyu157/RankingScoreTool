@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ranking Score Tool", "Ranking Score Tool\Ranking Score Tool.csproj", "{7DDED465-F7DA-4B92-A1FF-2502BD49E0A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{6DE61C78-3874-4A6C-84F4-0D1E7FEDA637}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DDED465-F7DA-4B92-A1FF-2502BD49E0A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DDED465-F7DA-4B92-A1FF-2502BD49E0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DDED465-F7DA-4B92-A1FF-2502BD49E0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DDED465-F7DA-4B92-A1FF-2502BD49E0A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,135 @@
+﻿<Application x:Class="Ranking_Score_Tool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:Ranking_Score_Tool"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:ws="https://schemas.elecho.dev/wpfsuite"
+             StartupUri="Main.xaml">
+
+    <Application.Resources>
+
+        <system:Boolean x:Key="IsDark">True</system:Boolean>
+
+        <!--  主题色  -->
+        <Color x:Key="ThemeColor">Pink</Color>
+        <ws:WindowOptionColor x:Key="WindowBorder">Pink</ws:WindowOptionColor>
+        <SolidColorBrush x:Key="CardBorder" Color="{DynamicResource ThemeColor}" />
+        <SolidColorBrush x:Key="FocusedBorder" Color="{DynamicResource ThemeColor}" />
+        <SolidColorBrush x:Key="Selection" Color="{DynamicResource ThemeColor}" />
+
+        <!--  元素前景色 (文本颜色)  -->
+        <Color x:Key="ForeColor">White</Color>
+        <SolidColorBrush x:Key="ControlFore" Color="{DynamicResource ForeColor}" />
+
+        <!--  提示文本颜色  -->
+        <Color x:Key="TipColor">#FFD8D8D8</Color>
+        <SolidColorBrush x:Key="TipFore" Color="{DynamicResource TipColor}" />
+
+        <!--  卡片的背景色  -->
+        <Color x:Key="CardBackColor">#FF202020</Color>
+        <SolidColorBrush x:Key="CardBack" Color="{DynamicResource CardBackColor}" />
+
+        <!--  元素的背景色  -->
+        <Color x:Key="BackColor">#FF303030</Color>
+        <SolidColorBrush x:Key="ControlBack" Color="{DynamicResource BackColor}" />
+
+        <!--  默认元素无边框颜色  -->
+        <Color x:Key="BorderColor">Transparent</Color>
+        <SolidColorBrush x:Key="Border" Color="{DynamicResource BorderColor}" />
+
+        <!--  如果有边框颜色  -->
+        <Color x:Key="GrayBorderColor">#FF5D5E61</Color>
+        <SolidColorBrush x:Key="GrayBorder" Color="{DynamicResource GrayBorderColor}" />
+
+        <!--  默认元素移入时的边框颜色  -->
+        <Color x:Key="HoverBorderColor">White</Color>
+        <SolidColorBrush x:Key="HoverBorder" Color="{DynamicResource HoverBorderColor}" />
+
+        <!--  默认按钮的配色  -->
+        <Color x:Key="HoverBackColor">#FF4F4F4F</Color>
+        <Color x:Key="PressedBackColor">#FF616161</Color>
+        <SolidColorBrush x:Key="HoverBack" Color="{DynamicResource HoverBackColor}" />
+        <SolidColorBrush x:Key="PressedBack" Color="{DynamicResource PressedBackColor}" />
+
+        <!--  反转按钮的配色  -->
+        <Color x:Key="ReverseBackColor">White</Color>
+        <Color x:Key="ReverseForeColor">#FF303030</Color>
+        <SolidColorBrush x:Key="ReverseBack" Color="{DynamicResource ReverseBackColor}" />
+        <SolidColorBrush x:Key="ReverseFore" Color="{DynamicResource ReverseForeColor}" />
+
+        <!--  WindowBackdrop: Auto None Mica Acrylic MicaAlt  -->
+        <ws:WindowBackdrop x:Key="Backdrop">Mica</ws:WindowBackdrop>
+        <!--  WindowCorner: Default DoNotRound Round RoundSmall  -->
+        <!--<ws:WindowCorner x:Key="Corner">DoNotRound</ws:WindowCorner>
+        <CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+        <CornerRadius x:Key="CardCornerRadius">0</CornerRadius>-->
+        <ws:WindowCorner x:Key="Corner">Round</ws:WindowCorner>
+        <CornerRadius x:Key="ControlCornerRadius">6</CornerRadius>
+        <CornerRadius x:Key="CardCornerRadius">12</CornerRadius>
+        <System:Double x:Key="ItemHeight">35</System:Double>
+        <Thickness x:Key="DefaultBorderThickness">2</Thickness>
+
+        <Style BasedOn="{StaticResource {x:Type ws:TextBox}}" TargetType="ws:TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+            <Setter Property="HoverBorderBrush" Value="{DynamicResource HoverBorder}" />
+            <Setter Property="FocusedBorderBrush" Value="{DynamicResource FocusedBorder}" />
+            <Setter Property="Background" Value="{DynamicResource ControlBack}" />
+            <Setter Property="Foreground" Value="{DynamicResource ControlFore}" />
+            <Setter Property="SelectionBrush" Value="{DynamicResource Selection}" />
+            <Setter Property="Height" Value="{DynamicResource ItemHeight}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
+            <Setter Property="HoverBorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
+            <Setter Property="FocusedBorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="ReverseButton" TargetType="ws:Button">
+            <Setter Property="Background" Value="{DynamicResource ControlBack}" />
+            <Setter Property="Foreground" Value="{DynamicResource ControlFore}" />
+            <Setter Property="HoverBorderBrush" Value="{DynamicResource HoverBorder}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+            <Setter Property="HoverBackground" Value="{x:Null}" />
+            <Setter Property="Height" Value="{DynamicResource ItemHeight}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+            <Setter Property="PressedBorderBrush" Value="{x:Null}" />
+            <Setter Property="PressedBackground" Value="{DynamicResource ReverseBack}" />
+            <Setter Property="PressedForeground" Value="{DynamicResource ReverseFore}" />
+            <Setter Property="BorderThickness" Value="{DynamicResource DefaultBorderThickness}" />
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type ws:Button}}" TargetType="ws:Button">
+            <Setter Property="Background" Value="{DynamicResource ControlBack}" />
+            <Setter Property="Foreground" Value="{DynamicResource ControlFore}" />
+            <Setter Property="HoverBackground" Value="{DynamicResource HoverBack}" />
+            <Setter Property="PressedBackground" Value="{DynamicResource PressedBack}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+            <Setter Property="HoverBorderBrush" Value="{DynamicResource HoverBorder}" />
+            <Setter Property="CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+            <Setter Property="Height" Value="{DynamicResource ItemHeight}" />
+            <Setter Property="PressedBorderBrush" Value="{x:Null}" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+
+
+        <Style x:Key="TipTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{DynamicResource TipFore}" />
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="BorderBrush" Value="{DynamicResource CardBorder}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="CornerRadius" Value="{DynamicResource CardCornerRadius}" />
+            <Setter Property="Background" Value="{DynamicResource CardBack}" />
+        </Style>
+    </Application.Resources>
+</Application>
