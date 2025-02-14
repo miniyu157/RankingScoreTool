@@ -196,10 +196,10 @@ namespace Ranking_Score_Tool
 
         #region 彩蛋
         [ObservableProperty]
-        private double _rotate = 1000;
+        private double _rotate = 60;
 
         [ObservableProperty]
-        private double _offsetX = -500;
+        private double _offsetX = 0;
 
         [ObservableProperty]
         private double _offsetY = -500;
@@ -274,6 +274,8 @@ namespace Ranking_Score_Tool
             Rotate = Lerp(Rotate, _targetRotate, SmoothFactor);
             OffsetX = Lerp(OffsetX, _targetOffsetX, SmoothFactor);
             OffsetY = Lerp(OffsetY, _targetOffsetY, SmoothFactor);
+
+            if (!IsEasterEgg) return;
 
             Color themeColor = HsvColor.FromString($"{colorProgressX * 360}, 24.705881%, 100%");
             SolidColorBrush brush = new(themeColor);
