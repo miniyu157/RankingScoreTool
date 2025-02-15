@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using EleCho.WpfSuite.Helpers;
 using KlxPiao.ColorTool;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -196,7 +197,7 @@ namespace Ranking_Score_Tool
 
         #region 彩蛋
         [ObservableProperty]
-        private double _rotate = 60;
+        private double _rotate = 61; //60会导致Random按钮的图标消失，我不知道这是为什么
 
         [ObservableProperty]
         private double _offsetX = 0;
@@ -217,13 +218,39 @@ namespace Ranking_Score_Tool
 
         public double scale = 1.2;
 
-        [RelayCommand]
-        private void MouseMove(MouseEventArgs e)
-        {
-            if (!IsEasterEgg) return;
+        #region Win32Api
 
+        // 获取鼠标位置（屏幕坐标）
+        public static Point GetScreenPosition()
+        {
+            Win32Point w32Mouse = new();
+            GetCursorPos(ref w32Mouse);
+            return new Point(w32Mouse.X, w32Mouse.Y);
+        }
+
+        public static Point GetRelativePosition(Window element)
+        {
+            Point screenPosition = GetScreenPosition();
+            Point relativePosition = new(screenPosition.X - element.Left, screenPosition.Y - element.Top);
+            return relativePosition;
+        }
+
+        [LibraryImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static partial bool GetCursorPos(ref Win32Point pt);
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct Win32Point
+        {
+            public int X;
+            public int Y;
+        }
+        #endregion
+
+        void UpdateTargetValueAndColor()
+        {
             Window window = Application.Current.MainWindow;
-            Point p = e.GetPosition(window);
+            Point p = GetRelativePosition(window);
 
             double minX = 4;
             double maxX = window.Width - 5;
@@ -237,12 +264,19 @@ namespace Ranking_Score_Tool
             double progressX = pixelWidth / lengthWidth;
             double progressY = pixelHeight / lengthHeight;
 
-            // 更新目标值而不是直接设置
             _targetRotate = -((progressX + progressY) / 2 - 0.5) * 360 * scale;
             _targetOffsetX = -(pixelWidth - lengthWidth / 2) * scale;
             _targetOffsetY = -(pixelHeight - lengthHeight / 2) * scale;
 
-            colorProgressX = progressX;
+            Color themeColor = HsvColor.FromString($"{progressX * 360}, 24.705881%, 100%");
+            SolidColorBrush brush = new(themeColor);
+
+            //Application.Current.Resources["ThemeColor"] = themeColor; //改这个没用的
+            Application.Current.Resources["CardBorder"] = brush;
+            Application.Current.Resources["Selection"] = brush;
+            Application.Current.Resources["FocusedBorder"] = brush;
+            Application.Current.Resources["WindowBorder"] = (WindowOptionColor)themeColor;
+            ThemeBrush = IsEasterEgg ? brush : (Brush)Application.Current.Resources["ControlFore"];
         }
 
         private record class OneTick(TimeSpan TimeSpan, Action Action)
@@ -261,8 +295,6 @@ namespace Ranking_Score_Tool
             }
         }
 
-        private double colorProgressX;
-
         public void StartAnimation()
         {
             CompositionTarget.Rendering += UpdateAnimation;
@@ -275,17 +307,10 @@ namespace Ranking_Score_Tool
             OffsetX = Lerp(OffsetX, _targetOffsetX, SmoothFactor);
             OffsetY = Lerp(OffsetY, _targetOffsetY, SmoothFactor);
 
-            if (!IsEasterEgg) return;
-
-            Color themeColor = HsvColor.FromString($"{colorProgressX * 360}, 24.705881%, 100%");
-            SolidColorBrush brush = new(themeColor);
-
-            //Application.Current.Resources["ThemeColor"] = themeColor; //改这个没用的
-            Application.Current.Resources["CardBorder"] = brush;
-            Application.Current.Resources["Selection"] = brush;
-            Application.Current.Resources["FocusedBorder"] = brush;
-            Application.Current.Resources["WindowBorder"] = (WindowOptionColor)themeColor;
-            ThemeBrush = IsEasterEgg ? brush : (Brush)Application.Current.Resources["ControlFore"];
+            if (IsEasterEgg)
+            {
+                UpdateTargetValueAndColor();
+            }
         }
 
         private static double Lerp(double current, double target, double factor)

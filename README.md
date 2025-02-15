@@ -5,7 +5,6 @@
     <a href="https://github.com/OrgEleCho/EleCho.WpfSuite" style="text-decoration:none;margin:0.5em">EleCho.WpfSuite✅</a>
     <a href="https://github.com/CommunityToolkit/dotnet" style="text-decoration:none;margin:0.5em">CommunityToolkit.Mvvm✅</a>
     <a href="https://github.com/miniyu157/KlxPiao.ColorTool" style="text-decoration:none;margin:0.5em">KlxPiao.ColorTool✅</a>
-    <a href="https://github.com/Microsoft/XamlBehaviorsWpf" style="text-decoration:none;margin:0.5em">Microsoft.Xaml.Behaviors.Wpf✅</a>
 </div>
 
 ---

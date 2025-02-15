@@ -9,13 +9,13 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Images\favicon.ico</ApplicationIcon>
 	<Copyright>Copyright © 2025 miniyu157</Copyright>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="EleCho.WpfSuite" Version="0.10.3" />
     <PackageReference Include="KlxPiao.ColorTool" Version="0.0.3" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
   </ItemGroup>
 
   <ItemGroup>
