@@ -11,7 +11,7 @@
 
 ## 🍍预览
 <div align="center">
-    <img src="./Preview.png" />
+    <img src="./Assets/Preview.png" />
 </div>
 
 ## 🍉安装

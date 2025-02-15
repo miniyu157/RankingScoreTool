@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Ranking_Score_Tool"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Ranking_Score_Tool.ViewModels"
         xmlns:ws="https://schemas.elecho.dev/wpfsuite"
         Title="FunctionView"
         Width="541"
@@ -21,7 +22,7 @@
     </WindowChrome.WindowChrome>
 
     <Window.DataContext>
-        <local:FunctionViewModel />
+        <viewmodels:FunctionViewModel />
     </Window.DataContext>
 
     <Grid Margin="15">

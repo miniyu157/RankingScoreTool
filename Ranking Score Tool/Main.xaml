@@ -2,9 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=System.Runtime"
+        xmlns:c="clr-namespace:Ranking_Score_Tool.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:Ranking_Score_Tool"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Ranking_Score_Tool.ViewModels"
         xmlns:ws="https://schemas.elecho.dev/wpfsuite"
         x:Name="ThisWindow"
         Title="Ranking Score Tool"
@@ -40,7 +42,7 @@
     </WindowChrome.WindowChrome>
 
     <Window.DataContext>
-        <local:MainViewModel />
+        <viewmodels:MainViewModel />
     </Window.DataContext>
 
     <Grid>
@@ -106,12 +108,12 @@
                             <TextBlock FontSize="18" Text="{Binding Title}" />
                             <ws:StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="8">
                                 <TextBlock HorizontalAlignment="Right" Style="{StaticResource TipTextBlock}" Text="模式" />
-                                <local:DoubleButton BorderThickness="{StaticResource DefaultBorderThickness}"
-                                                    Command1="{Binding RksModeCommand}"
-                                                    Command2="{Binding AccModeCommand}"
-                                                    Content1="Rks"
-                                                    Content2="Acc"
-                                                    CornerRadius="{StaticResource ControlCornerRadius}" />
+                                <c:DoubleButton BorderThickness="{StaticResource DefaultBorderThickness}"
+                                                Command1="{Binding RksModeCommand}"
+                                                Command2="{Binding AccModeCommand}"
+                                                Content1="Rks"
+                                                Content2="Acc"
+                                                CornerRadius="{StaticResource ControlCornerRadius}" />
                             </ws:StackPanel>
                         </DockPanel>
 
