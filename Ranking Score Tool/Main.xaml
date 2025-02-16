@@ -38,7 +38,7 @@
     </Window.Triggers>
 
     <Window.Background>
-        <ImageBrush x:Name="BackgroundImageBrush" ImageSource="pack://Application:,,,/Images/background.jpg" Opacity="0" Stretch="UniformToFill" />
+        <ImageBrush x:Name="BackgroundImageBrush" ImageSource="pack://Application:,,,/Images/background.jpg" Opacity="{StaticResource BackgroundOpacity}" Stretch="UniformToFill" />
     </Window.Background>
 
     <Window.Resources>

@@ -7,7 +7,7 @@
     <system:Boolean x:Key="IsDark">True</system:Boolean>
 
     <!--  背景图像的透明度  -->
-    <System:Double x:Key="BackgroundOpacity">0.35</System:Double>
+    <System:Double x:Key="BackgroundOpacity">0.2</System:Double>
 
     <!--  主题色  -->
     <Color x:Key="ThemeColor">Pink</Color>

@@ -10,6 +10,7 @@
     <ApplicationIcon>Images\favicon.ico</ApplicationIcon>
 	<Copyright>Copyright © 2025 miniyu157</Copyright>
 	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
