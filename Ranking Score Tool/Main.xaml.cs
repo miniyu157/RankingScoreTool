@@ -10,6 +10,13 @@ namespace Ranking_Score_Tool
         public Main()
         {
             InitializeComponent();
+
+            LoadedAnimation.Completed += LoadedAnimation_Completed;
+        }
+
+        private void LoadedAnimation_Completed(object? sender, EventArgs e)
+        {
+            MainGrid.RenderTransformOrigin = new Point(0.5, 0.5);
         }
     }
 }

@@ -2,5 +2,8 @@
 
 internal class Animation
 {
-    public static double Lerp(double current, double target, double factor) => current + (target - current) * factor;
+    public static double Lerp(double current, double target, double factor)
+    {
+        return current + (target - current) * factor;
+    }
 }

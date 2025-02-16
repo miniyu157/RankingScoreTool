@@ -7,12 +7,6 @@ internal class ModeHandler
 
     }
 
-    public enum CalcMode
-    {
-        Rks,
-        Acc
-    }
-
     // 初始化一个不存在的枚举成员，使其第一次设置值仍然能够触发事件
     private CalcMode _mode = (CalcMode)(-99);
     public CalcMode Mode

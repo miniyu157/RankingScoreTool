@@ -70,16 +70,46 @@
                 </ws:Image.Triggers>
             </ws:Image>
 
-            <TextBlock Foreground="{Binding ThemeBrush}" Text="(≧∀≦)ゞ" TextAlignment="Center" />
+            <TextBlock Foreground="{Binding SpecialBrush}" Text="(≧∀≦)ゞ" TextAlignment="Center" />
         </ws:StackPanel>
 
-        <ws:Grid RenderTransformOrigin="0.5,0.5" RowDefinitions="Auto,15,*,15,Auto">
+        <ws:Grid x:Name="MainGrid" RenderTransformOrigin="0,0" RowDefinitions="Auto,15,*,15,Auto">
             <Grid.RenderTransform>
                 <TransformGroup>
-                    <RotateTransform Angle="{Binding Rotate}" />
-                    <TranslateTransform X="{Binding OffsetX}" Y="{Binding OffsetY}" />
+                    <RotateTransform x:Name="RotateTrans" Angle="{Binding Rotate}" />
+                    <TranslateTransform x:Name="TranslateTrans" X="{Binding OffsetX}" Y="{Binding OffsetY}" />
                 </TransformGroup>
             </Grid.RenderTransform>
+
+            <ws:Grid.Triggers>
+                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard x:Name="LoadedAnimation" FillBehavior="Stop">
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0:0.5" />
+
+                            <DoubleAnimation Storyboard.TargetName="RotateTrans"
+                                             Storyboard.TargetProperty="Angle"
+                                             From="60"
+                                             To="0"
+                                             Duration="0:0:0:1">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+
+                            <DoubleAnimation Storyboard.TargetName="TranslateTrans"
+                                             Storyboard.TargetProperty="Y"
+                                             From="-500"
+                                             To="0"
+                                             Duration="0:0:0:1">
+                                <DoubleAnimation.EasingFunction>
+                                    <CubicEase EasingMode="EaseOut" />
+                                </DoubleAnimation.EasingFunction>
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </ws:Grid.Triggers>
 
             <Grid.Style>
                 <!--  最大化时加大边距  -->
@@ -96,7 +126,7 @@
 
             <!--  0  -->
             <ws:StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="15">
-                <TextBlock FontSize="18" Text="{Binding Title, ElementName=ThisWindow}" />
+                <TextBlock FontSize="18" Foreground="{Binding SpecialBrush}" Text="{Binding Title, ElementName=ThisWindow}" />
             </ws:StackPanel>
 
             <!--  1  -->
