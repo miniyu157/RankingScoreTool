@@ -12,16 +12,34 @@
         Title="Ranking Score Tool"
         Width="350"
         Height="460"
-        ws:WindowOption.Backdrop="{DynamicResource Backdrop}"
+        ws:WindowOption.Backdrop="{StaticResource Backdrop}"
         ws:WindowOption.BorderColor="{DynamicResource WindowBorder}"
         ws:WindowOption.Corner="{DynamicResource Corner}"
         ws:WindowOption.IsDarkMode="{DynamicResource IsDark}"
-        Background="Transparent"
         FontFamily="Segoe UI Variable Display"
         FontSize="14"
         Foreground="{DynamicResource ControlFore}"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d">
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation AutoReverse="False"
+                                     Storyboard.TargetName="BackgroundImageBrush"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="{StaticResource BackgroundOpacity}"
+                                     Duration="0:0:0:1" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Background>
+        <ImageBrush x:Name="BackgroundImageBrush" ImageSource="pack://Application:,,,/Images/background.jpg" Opacity="0" Stretch="UniformToFill" />
+    </Window.Background>
 
     <Window.Resources>
         <DrawingImage x:Key="Icon_Func">
@@ -47,6 +65,7 @@
 
     <Grid>
         <ws:StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20" Visibility="{Binding EggVisibility}">
+
             <ws:Image Width="100"
                       BorderThickness="0"
                       CornerRadius="12"
@@ -55,8 +74,9 @@
                 <ws:Image.RenderTransform>
                     <RotateTransform x:Name="rotateTransform" />
                 </ws:Image.RenderTransform>
+
                 <ws:Image.Triggers>
-                    <EventTrigger RoutedEvent="ws:Image.Loaded">
+                    <EventTrigger RoutedEvent="Window.Loaded">
                         <BeginStoryboard>
                             <Storyboard RepeatBehavior="Forever">
                                 <DoubleAnimation Storyboard.TargetName="rotateTransform"
@@ -82,7 +102,7 @@
             </Grid.RenderTransform>
 
             <ws:Grid.Triggers>
-                <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                <EventTrigger RoutedEvent="Window.Loaded">
                     <BeginStoryboard>
                         <Storyboard x:Name="LoadedAnimation" FillBehavior="Stop">
                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0:0.5" />
@@ -138,7 +158,8 @@
                             <TextBlock FontSize="18" Text="{Binding Title}" />
                             <ws:StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="8">
                                 <TextBlock HorizontalAlignment="Right" Style="{StaticResource TipTextBlock}" Text="模式" />
-                                <c:DoubleButton BorderThickness="{StaticResource DefaultBorderThickness}"
+                                <c:DoubleButton BorderBrush="{StaticResource GrayBorder}"
+                                                BorderThickness="{StaticResource DefaultBorderThickness}"
                                                 Command1="{Binding RksModeCommand}"
                                                 Command2="{Binding AccModeCommand}"
                                                 Content1="Rks"

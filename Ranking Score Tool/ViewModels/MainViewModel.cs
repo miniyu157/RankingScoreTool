@@ -48,6 +48,8 @@ public partial class MainViewModel : ObservableObject
     private void BurstGuard_Success(object? sender, BurstGuard.GuardEventArgs e)
     {
         IsEasterEgg = !IsEasterEgg;
+
+
     }
 
     private void InitializeMode()

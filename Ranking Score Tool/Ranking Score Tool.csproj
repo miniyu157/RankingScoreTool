@@ -13,12 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="EleCho.WpfSuite" Version="0.10.3" />
     <PackageReference Include="KlxPiao.ColorTool" Version="0.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\background.jpg" />
     <Resource Include="Images\Function_Dark.png" />
     <Resource Include="Images\Function_Light.png" />
     <Resource Include="Images\logo.png" />
