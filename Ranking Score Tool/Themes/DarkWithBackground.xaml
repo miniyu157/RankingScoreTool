@@ -10,8 +10,8 @@
     <System:Double x:Key="BackgroundOpacity">0.4</System:Double>
 
     <!--  主题色  -->
-    <Color x:Key="ThemeColor">Pink</Color>
-    <ws:WindowOptionColor x:Key="WindowBorder">Pink</ws:WindowOptionColor>
+    <Color x:Key="ThemeColor">LightBlue</Color>
+    <ws:WindowOptionColor x:Key="WindowBorder">LightBlue</ws:WindowOptionColor>
     <SolidColorBrush x:Key="CardBorder" Color="{DynamicResource ThemeColor}" />
     <SolidColorBrush x:Key="FocusedBorder" Color="{DynamicResource ThemeColor}" />
     <SolidColorBrush x:Key="Selection" Color="{DynamicResource ThemeColor}" />
